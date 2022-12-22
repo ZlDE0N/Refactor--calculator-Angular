@@ -1,8 +1,9 @@
 <main>
-    <app-screen [screenValue]="screenValue"></app-screen>
+    <app-screen [screenValue]="screenValue"></app-screen> <!--SCREEN-->
     <section>
         <div class="fila">
-            <button id="cls" class="btn btn-primary bigB" (click)="clean()"><strong>C</strong></button>
+            <!-- <button id="cls" class="btn btn-primary bigB" (click)="clean()"><strong>C</strong></button> -->
+            <app-button [esCorto]="false" texto="C" (accion)="nuevoMetodo($event)"></app-button>
             <!-- <button class="btn btn-primary smallB" (click)="add('**')">x<sup>y</sup></button> -->
             <button class="btn btn-primary bigB" (click)="erase()">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-backspace-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -11,34 +12,12 @@
             </button>
         </div>
         <!-- Numeric Buttons -->
-        <div class="fila">
-            <app-button [esCorto]="esCorto" texto="7" (accion)="agregarTexto($event)"></app-button>
-            <app-button [esCorto]="esCorto" texto="8" (accion)="agregarTexto($event)"></app-button>
-            <app-button [esCorto]="esCorto" texto="9" (accion)="agregarTexto($event)"></app-button>
-            <app-button [esCorto]="esCorto" texto="*" (accion)="agregarTexto($event)"></app-button>
+        <div class="fila" *ngFor="let f of modelo">
+            <app-button *ngFor="let b of f" [texto]="b.texto" [esCorto]="b.esCorto" (accion)="nuevoMetodo($event)"></app-button>
         </div>
-        <div class="fila">
-            <app-button [esCorto]="esCorto" texto="4" (accion)="agregarTexto($event)"></app-button>
-            <app-button [esCorto]="esCorto" texto="5" (accion)="agregarTexto($event)"></app-button>
-            <app-button [esCorto]="esCorto" texto="6" (accion)="agregarTexto($event)"></app-button>
-            <app-button [esCorto]="esCorto" texto="-" (accion)="agregarTexto($event)"></app-button>
-        </div>     
-        <div class="fila">
-            <app-button [esCorto]="esCorto" texto="1" (accion)="agregarTexto($event)"></app-button>
-            <app-button [esCorto]="esCorto" texto="2" (accion)="agregarTexto($event)"></app-button>
-            <app-button [esCorto]="esCorto" texto="3" (accion)="agregarTexto($event)"></app-button>
-            <app-button [esCorto]="esCorto" texto="+" (accion)="agregarTexto($event)"></app-button>
-        </div>     
-        <div class="fila">
-            <app-button [esCorto]="esCorto" texto="(" (accion)="agregarTexto($event)"></app-button>
-            <app-button [esCorto]="esCorto" texto=")" (accion)="agregarTexto($event)"></app-button>
-            <app-button [esCorto]="esCorto" texto="0" (accion)="agregarTexto($event)"></app-button>
-            <app-button [esCorto]="esCorto" texto="/" (accion)="agregarTexto($event)"></app-button>
-        </div> 
-        <div class="fila">
-            <app-button [esCorto]="!esCorto" texto="." (accion)="agregarTexto($event)"></app-button>
-            <app-button [esCorto]="!esCorto" texto="=" (click)="equal()"></app-button>
-        </div>     
+          <!--Hitorial Button  -->
+          <div class="fila">
+            <app-button texto="Historial" [esCorto]="false" RouterLink="historial" (click)="navegar()"></app-button>
+          </div>
     </section>
-    
 </main>

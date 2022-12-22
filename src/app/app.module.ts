@@ -7,13 +7,15 @@ import { ScreenComponent } from './components/screen/screen.component';
 import { CuerpoCalcComponent } from './components/cuerpo-calc/cuerpo-calc.component';
 import { ButtonComponent } from './components/button/button.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HistorialComponent } from './components/historial/historial.component';
 
 @NgModule({
   declarations: [ //Aqui van los componentes
     AppComponent,
     ScreenComponent,
     CuerpoCalcComponent,
-    ButtonComponent
+    ButtonComponent,
+    HistorialComponent
   ],
   imports: [ //Aqui van los modulos
     BrowserModule,

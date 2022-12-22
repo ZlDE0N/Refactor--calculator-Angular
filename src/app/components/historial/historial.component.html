@@ -1,0 +1,23 @@
+<!-- historic section -->
+<div class="row">
+    <button class="btn btn-primary bigA"  (click)="open(showHistoric)">Toca para ver el historial </button>
+    <!-- <button class="btn btn-primary smallB" (click)="equal()">=</button> -->
+    <button class="btn btn-primary bigA mt-4" RouterLink="calc" (click)="navegar()">Volver a Calculadora</button>
+</div>
+
+<ng-template #showHistoric let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title" id="calculator-history">Calculator history</h5>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()"> <!--eL modal.dismiss() es para cerrar el modal-->
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+        <table class="table table-striped">
+            <p *ngIf="historic.length === 0">No hay Historial para mostrar Todavia :(</p>
+            <tbody>
+                <tr *ngFor="let lines of historic"> {{lines.count}} = <strong> {{lines.result}} </strong></tr>
+            </tbody>
+        </table>
+    </div>
+</ng-template>
